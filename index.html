@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Reshmi 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffe0f0, #ffc0cb);
+      overflow: hidden;
+      color: #6b0d5c;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      animation: fadeInDown 2s ease-out forwards;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 20px;
+      max-width: 600px;
+      animation: fadeInUp 2.5s ease-out forwards;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      animation: fadeInUp 3s ease-out forwards;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: floatUp 5s infinite ease-in;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -10%;
+        transform: translateX(0) scale(1) rotate(45deg);
+        opacity: 0.7;
+      }
+      100% {
+        bottom: 110%;
+        transform: translateX(50px) scale(1.5) rotate(90deg);
+        opacity: 0;
+      }
+    }
+
+    .message {
+      display: none;
+      margin-top: 30px;
+      font-size: 2em;
+      color: #ff1493;
+      animation: popIn 1s ease forwards;
+    }
+
+    #reject-button {
+      background-color: #ffffff;
+      color: rgb(38, 38, 38);
+    }
+    #reject-button:hover {
+      background-color: #c4c4c4;
+      color: rgb(0, 0, 0);
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dear Reshmi 💕</h1>
+    <p>Every heartbeat, every moment, every dream — it all leads to this one truth. I've fallen for you.</p>
+    <p>Do you love me?</p>
+    <button onclick="confessLove()">Yes, I Love You ❤️</button>
+    <button id="reject-button" onclick="confessRejection()">No, 😡</button>
+    <div class="message" id="loveMessage">Thank you for loving me back, Reshmi 🥰</div>
+  </div>
+
+  <div class="hearts" id="heartsContainer"></div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.getElementById('heartsContainer').appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function confessLove() {
+      const msg = document.getElementById("loveMessage");
+      msg.style.display = "block";
+
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+    function confessRejection() {
+      const msg = document.getElementById("loveMessage");
+      msg.style.display = "block";
+      msg.innerText = "I will always love you, Reshmi 😭";
+
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+  </script>
+</body>
+</html>
